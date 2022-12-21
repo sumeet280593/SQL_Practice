@@ -1,0 +1,31 @@
+-- create database
+CREATE DATABASE db1;
+
+use db1;
+
+-- create table employee
+create table emp
+(id int,
+emp_name varchar (50), 
+manager_id int,
+manager_name varchar(50), 
+emp_salary int,
+manager_salary int,
+emp_join date,
+manager_join date);
+
+insert into emp values(1, 'amit', 2, 'pankaj', 10000, 30000, '2019-02-10', '2018-09-10');
+
+insert into emp values(5, 'Rahul', 4, 'Nikhil', 25000, 40000, '2018-02-01', '2017-09-10'),
+(7, 'Atul', 3, 'Deepak', 22000, 50000, '2019-02-01', '2017-02-10'),
+(2, 'pankaj', 4, 'Nikhil', 30000, 40000, '2019-02-10', '2017-09-10'),
+(4, 'Nikhil', 3, 'Deepak', 40000, 50000, '2017-09-10', '2017-02-10');
+
+select * from emp;
+
+--- update emp set emp_salary = 20000 where emp_name = 'Atul';
+
+--- employees having more salary then  their managers
+select e1.* from emp e1, emp e2
+where e1.emp_salary > e2.manager_salary
+and e1.id = e2.id;
