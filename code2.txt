@@ -48,3 +48,45 @@ create Table employee2(
 
 --- To drop table from database/schema
 DROP TABLE employee1;
+
+
+select * from employee;
+
+--- Ques 1) Query emp name whose age is less than 30
+select emp_name from employee where age < 30;
+
+--- Ques 2) Query all columns whose emp salary is less than 50000 and age is greater than 30
+
+select * from employee where salary < 50000 and age >30;
+
+--- Ques 3) Query employee name, age and salary whose emp salary is less than 50000 
+---         or age is greater than 30
+
+select emp_name, age, salary from employee where salary < 50000 OR age > 30;
+
+--- Ques 3) Query employee name, age and salary whose emp salary in range 30000 to 50000 
+---         and age in range 30 to 40
+
+select emp_name, age, salary from employee 
+where (salary between 30000 and 50000) 
+and (age between 30 and 40);
+
+--- Query all employees whose age is not defined
+select * from employee where age is NULL;
+
+--- Query all employees whose in age column null is not present
+select * from employee where age is NOT NULL;
+
+--- Query maximum salary of the employee
+SELECT * FROM employee WHERE salary = (SELECT MAX(salary) from employee);
+
+--- Query 2nd maximum salary of the employee
+
+--- Method 1
+SELECT * from employee 
+where salary = (SELECT MAX(salary) FROM employee where salary not in 
+                (SELECT MAX(salary) FROM employee)
+                );
+
+-- Method 2
+SELECT * from employee ORDER BY salary DESC LIMIT 1 OFFSET 1;
