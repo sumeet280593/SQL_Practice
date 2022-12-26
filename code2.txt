@@ -1,0 +1,50 @@
+
+--- To create new database
+CREATE DATABASE demo;
+
+--- To go inside database
+use demo;
+
+--- To create a new table
+create Table employee(
+    emp_id INT,
+    emp_name VARCHAR(50),
+    age INT,
+    salary INT
+);
+
+--- Query all the records from table
+select * from employee;
+
+--- Insert single record in the table
+INSERT INTO employee VALUES(10, 'Amit', 25, 20000);
+
+--- Insert Multiple record in the table
+INSERT INTO employee VALUES(20, 'Rahul', 28, 25000),
+                    (30, 'Raj', 32, 40000),
+                    (40, 'Ajay', 34, 28000),
+                    (50, 'Ankit', 42, 50000),
+                    (60, 'Yash', 44, 60000);
+
+--- Insert record in the table by another way using column name
+INSERT INTO employee (emp_id, salary, emp_name) VALUES(70,45000,'Sumeet');
+
+--- Insert multiple records in the table by another way using column name
+INSERT INTO employee (emp_id, salary, emp_name) VALUES(80,40000,'Pankaj'),
+(90,60000,'John'), (1000,50000,'Mike');
+
+--- To update any value in the column
+UPDATE employee SET age = 30 WHERE emp_name = 'John';
+
+--- To delete any row in the column
+DELETE FROM employee WHERE emp_id = 1000;
+
+create Table employee2(
+    emp_id INT,
+    emp_name VARCHAR(50),
+    age INT,
+    salary INT
+);
+
+--- To drop table from database/schema
+DROP TABLE employee1;
