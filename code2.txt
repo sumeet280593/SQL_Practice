@@ -90,3 +90,55 @@ where salary = (SELECT MAX(salary) FROM employee where salary not in
 
 -- Method 2
 SELECT * from employee ORDER BY salary DESC LIMIT 1 OFFSET 1;
+
+
+
+
+-- create new table department
+CREATE TABLE dept(
+    dept_id INT,
+    dept_name VARCHAR(50)
+);
+
+select * from dept;
+
+--- Insert data into department table
+INSERT INTO dept VALUES(100, 'HR'),
+                        (200, 'ADMIN'),
+                        (300, 'SALES'),
+                        (400, 'Engg');
+
+ALTER TABLE employee ADD dept_name VARCHAR(50);
+
+ALTER TABLE employee RENAME COLUMN dept_name to dept_id;
+
+select * FROM employee;
+select * FROM dept;
+
+ALTER TABLE employee MODIFY COLUMN dept_id INT;
+
+update employee set age = 29, dept_id = 100 where emp_id = 90;
+
+---JOins
+
+select e.*, d.dept_name from employee e INNER JOIN dept d ON e.dept_id = d.dept_id;
+
+--- Ques) create a column salary status where if salary > 50000 then it is good salary , 
+---below 30000 then it is poor salary else it will be average salary
+
+--- Python code
+-- if salary > 50000:
+--     print('good_salary')
+-- elif salary < 30000:
+--     print('poor salary')
+-- else:
+--     print('average salary')
+
+
+--- SQL code
+select *, CASE when salary > 50000 then 'Good Salary'
+                when salary < 30000 then 'Poor Salary'
+                else 'Average Salary'
+                END as salary_status
+
+from employee;
